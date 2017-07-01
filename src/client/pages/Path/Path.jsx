@@ -4,100 +4,78 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import BreadCrumbs from '../shared/BreadCrumbs';
-/* import Card from '../shared/Card';
+import { addBookmark, removeBookmark } from '../../actions/userActions';
 
-const lessonTypeIcons = {
-  Reading: 'fa fa-book',
-  Project: 'fa fa-tasks',
-  'Supplemental Course': '',
-};
-
-const lessonTypeColors = {
-  Reading: '#ffea7e',
-  Project: 'deepskyblue',
-  'Supplemental Course': '',
-};
-
-const getAllCourseLessons = (course, curriculum) => {
-  const lessons = [];
-  course.lessonIds.forEach((lessonId) => {
-    lessons.push(curriculum.lessons[lessonId]);
-  });
-  return lessons;
-};
-
-const LessonCard = ({ name, description, id, type }) => (
-  <Card
-    caption={name}
-    subcaption="LESSON"
-    text={description}
-    to={`/lessons/${id}`}
-    content={null}
-    icons={[lessonTypeIcons[type], 'fa fa-graduation-cap']}
-    color={lessonTypeColors[type]}
-  />
-);
-*/
-const CourseCard = ({ curriculum, pathId, courseId }) => (
-  <Link className="course-card" to={`/paths/${pathId}/${courseId}`}>
+const CourseCard = ({ course, linkTo }) => (
+  <Link className="course-card connected" to={linkTo}>
     <div className="course-card-header">
       <span className="course-card-caption">COURSE</span>
-      <h1>{curriculum.courses[courseId].name}</h1>
+      <h1>{course.name}</h1>
     </div>
-    <p className="course-description">{curriculum.courses[courseId].description}</p>
-    <div className="lesson-list">
-      {/* getAllCourseLessons(curriculum.courses[id], curriculum).map(lesson => (
-        <LessonCard
-          name={lesson.name}
-          description={lesson.description}
-          id={lesson.id}
-          type={lesson.type}
-          key={lesson.id}
-        />
-      ))*/}
+    <div className="course-card-content">
+      <p className="course-description">{course.description}</p>
+      <h1 className="completion-text">{course.nCompleted}/{course.nTotal}</h1>
     </div>
   </Link>
 );
 
-const Path = ({ match, curriculum }) => {
+const PathInfoCard = ({ path }) => (
+  <div className="course-card connected">
+    <div className="course-card-header" style={{ background: '#007399' }}>
+      <i className="card-icon path-info-icon fa fa-info" />
+      <h1>{path.name}</h1>
+    </div>
+    <div className="course-card-content">
+      <p className="course-description">{path.description}</p>
+    </div>
+  </div>
+);
+
+const Path = ({ match, curriculum, user, dispatch }) => {
+  const pathId = match.params.id;
   const path = curriculum.paths[match.params.id];
-  const courses = path.courseIds.map(courseId => (
-    <CourseCard
-      curriculum={curriculum}
-      pathId={match.params.id}
-      courseId={courseId}
-      key={courseId}
-    />
-  ));
+
+  const courses = path.courseIds.map((courseId) => {
+    const course = curriculum.courses[courseId];
+    return <CourseCard linkTo={`/paths/${pathId}/${courseId}`} course={course} key={courseId} />;
+  });
   return (
     <div className="container">
-      <BreadCrumbs curriculum={curriculum} pathId={match.params.id} />
-      <div className="grid-full path path-image">
+      <div className="path-container path path-image">
         <div className="path-header path-header-image" />
         <div className="path-header path-header-image-color">
+          <BreadCrumbs curriculum={curriculum} pathId={match.params.id} />
           <h1 className="path-header-path-name">{path.name}</h1>
+          <h1 className="completion-text-big">{path.nCompleted}/{path.nTotal}</h1>
+          {user.bookmarkedPaths.indexOf(pathId) === -1 ?
+            <button className="path-bookmark-button" onClick={() => dispatch(addBookmark(pathId))}>Add Bookmark</button> :
+            <button className="path-bookmark-button" onClick={() => dispatch(removeBookmark(pathId))}>Remove Bookmark</button>}
         </div>
-        {courses}
+        <div className="grid-half">
+          <PathInfoCard path={path} />
+        </div>
+        <div className="grid-half">
+          {courses}
+        </div>
       </div>
     </div>
   );
 };
-/*
-LessonCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-};*/
+
 CourseCard.propTypes = {
-  pathId: PropTypes.string.isRequired,
-  courseId: PropTypes.string.isRequired,
-  curriculum: PropTypes.objectOf(PropTypes.shape).isRequired,
+  course: PropTypes.objectOf(PropTypes.shape).isRequired,
+  linkTo: PropTypes.string.isRequired,
+};
+
+PathInfoCard.propTypes = {
+  path: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 Path.propTypes = {
   match: PropTypes.objectOf(PropTypes.shape).isRequired,
+  user: PropTypes.objectOf(PropTypes.shape).isRequired,
   curriculum: PropTypes.objectOf(PropTypes.shape).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Path;

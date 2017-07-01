@@ -1,16 +1,22 @@
 /* eslint-disable import/prefer-default-export */
 
-// TODO: Get rid of this and put something useful here
-/**
- * User login action
- *
- * @export
- * @param {any} user -
- * @returns {object} - User action type identifier
- */
-export function loginTestUser(user) {
+export function setCurrentPathId(pathId) {
   return {
-    type: 'TEST_LOGIN',
-    user,
+    type: 'SET_CURRENT_PATH_ID',
+    pathId,
+  };
+}
+
+export function addBookmark(pathId) {
+  return {
+    type: 'ADD_BOOKMARK',
+    pathId,
+  };
+}
+
+export function removeBookmark(pathId) {
+  return {
+    type: 'REMOVE_BOOKMARK',
+    pathId,
   };
 }

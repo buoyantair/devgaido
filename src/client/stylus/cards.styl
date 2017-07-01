@@ -209,6 +209,7 @@
     flex 1
 }
 
+
 .card-icon {
     color: colorTextInverse
     float: right
@@ -242,14 +243,14 @@
     box-shadow: none
 }
 
-
 .course-card {
+    display: flex;
+    flex-direction: column;
     background: none;
-    margin-top:20px;
+    margin-top:10px;
+    margin-bottom:40px;
     position: relative;
 }
-
-
 
 .course-card-header {
     background-color: colorPrimaryDark;
@@ -323,6 +324,14 @@
     
 }
 
+.course-card-content {
+    background-color: colorPrimaryLight;
+    border-radius: 0 0 6px 6px
+    margin-top:50px;
+    padding-left 10px
+    padding-right 10px
+}
+
 .course-card-caption {
     display: inline-block;
     color: colorTextInverse
@@ -343,9 +352,7 @@
 }
 .course-description {
     margin: 0;
-    font-size: 110%
-    color rgba(0,0,0,0.7)
-    padding 10px
+    padding:1rem
 }
 
 .course-lesson

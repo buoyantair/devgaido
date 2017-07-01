@@ -2,6 +2,7 @@ import Home from './pages/Home/Home';
 import Path from './pages/Path/Path';
 import Course from './pages/Course/Course';
 import Lesson from './pages/Lesson/Lesson';
+import PathCatalog from './pages/PathCatalog/PathCatalog';
 import Profile from './pages/Profile/Profile';
 import Times from './pages/Times/Times';
 import Objectives from './pages/Objectives/Objectives';
@@ -25,6 +26,7 @@ const routes = [
     path: '/',
     exact: true,
     component: Home,
+    passdown: ['lock', 'user'],
   },
   {
     path: '/dashboard',
@@ -59,19 +61,25 @@ const routes = [
     path: '/paths/:id',
     exact: true,
     component: Path,
-    passdown: ['curriculum'],
+    passdown: ['curriculum', 'user', 'dispatch'],
   },
   {
     path: '/paths/:pid/:id',
     exact: true,
     component: Course,
-    passdown: ['curriculum'],
+    passdown: ['curriculum', 'user'],
   },
   {
     path: '/paths/:pid/:cid/:id',
     exact: true,
     component: Lesson,
-    passdown: ['curriculum'],
+    passdown: ['curriculum', 'user', 'dispatch'],
+  },
+  {
+    path: '/paths',
+    exact: true,
+    component: PathCatalog,
+    passdown: ['curriculum', 'dispatch'],
   },
 ];
 

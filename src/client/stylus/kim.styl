@@ -4,47 +4,293 @@
  MESSY JIM/KIM STUFF
 
 --------------------------------*/
+@lost flexbox flex;
 
-i.path-icon::before
-        content "\f02d"
+.lesson-status-icon
+    font-size 80px
+    color white
+    font-family: FontAwesome;
+    font-style: normal
+
+.lesson-caption-small
+    display block
+
+.lesson-button-container
+    display flex
+    justify-content: space-around
+
+button.lesson-button,
+a.lesson-link-button
+    display inline-block
+    text-align: center
+    border-radius 999px
+    background colorSecondary
+    font-weight: normal
+    font-size 16px
+    color white !important
+    background colorSecondary !important
+    width 25%
+    min-width inherit
+    margin 10px
+    
+button.lesson-button
+    background colorPrimary !important
+    padding 25px 20px 28px 20px !important
+
+a.lesson-link-button
+    padding 15px 10px 10px 10px !important
+
+.path-header-path-name
+    font-size 30px
+
+.breadcrumb-icon
+    //color colorTertiary
+    font-family: FontAwesome;
+    font-style: normal
+
+.breadcrumbs-container
+    position absolute
+    top 20px
+    left 20px
+    color white
+    font-weight: bold
+    font-size: 14px
+    a 
+        color white
+
+.header-logo-text
+    color #E8E9F7 !important
+    font-size: 35px
+    letter-spacing: 5px
+    font-weight: bold
+    
+.main-navigation
+    padding 0px
+    margin-top 5px
 a
     text-decoration: none
+
+.path-info-icon
+    margin 0
+    padding-top 10px
+
+.path-bookmark-button
+    border none
+    padding 5px
+    min-width: 0
+    position: absolute    
+    top 24px
+    right 20px
+    background: none
+    box-shadow: none
+    border 2px solid white
+    width 140px
+
+.path-container
+    display flex
+    flex-wrap: wrap
+    justify-content: space-between
+    width 100%
+
+.grid-half
+    lost-column: 1/2 2;
+
+@media only screen and (max-width: 1010px)
+    .grid-half
+        lost-column: 1/1 1;
     
-.learning-path-item
-    cursor pointer
-//.learning-path-item.opened
-//    background red
 
-// @lost flexbox flex;
+.path-info-container
+    margin-top 10px
+    padding 20px
+    padding left 5px
+    background: colorPrimaryLight
+    box-shadow: 5px 5px 10px rgba(30, 33, 94, 0.15)
 
-// .lostGridColumn
-//     lost-column: 1/3 3;
-//     margin-bottom 10px
+.no-paths
+    display: flex
+    flex-wrap: wrap
+    margin-top 50px
+    align-items: center
+    justify-content: center
+    margin-bottom 30px
 
-// .lostContainer
-//     margin-top: 7rem
-//     lost-center: widthMax;
-//     display: flex
+.no-paths-text
+    font-size 18px
+    text-align: center
+    margin-bottom: 20px
+    width 100%
 
-// .lostContainerHeader
-//     lost-center: widthMax;
-//     display: flex
-//     align-items: center
-//     position: relative
+.no-paths-button
+    text-align: center
+    width 200px
+    border-radius 999px
+    background colorSecondary
+    padding 10px
+    font-weight: bold
+    color white !important
 
-// .constrained
-//     lost-center: widthMax;
-//     display: flex
-//     position: relative
-//     flex-direction: column
+.home-hero
+    background: url('/assets/img/hero.jpg')
+    background-size: cover
+    height 100vh
+    width 100%
+    margin-top -12px
+    display flex
+    align-items: center
+    justify-content: center
 
-// .putRight
-//     flex 1
+.home-content
+    display flex
+    flex-wrap: wrap
+    width 50%
+    margin-top -200px
 
-// .lostFullWidth
-//     lost-column: 1;
+.hero-tagline
+    color white
+    font-size 42px
+    width 100%
 
+.hero-tagline-colored
+    color colorSecondary
 
+.hero-details
+    margin-top 20px
+    margin-bottom: 20px
+    h2
+        color rgba(255,255,255,1)
+        margin-bottom: 10px
+        font-size 19px
+        font-weight: normal
+        text-transform: none
+        
+.hero-cta-div
+    width 100%
+    display flex
+
+.hero-cta-primary,
+.hero-cta-secondary
+    flex 1 100%
+    margin 5px
+    text-align: center
+    border-radius: 999px
+    padding 10px
+    font-size: 25px
+
+.hero-cta-secondary
+    color white !important
+    border 2px solid white
+    background: rgba(0,0,0,0.3)
+
+.hero-cta-primary
+    background colorSecondary !important
+    color white !important
+
+.breadcrumb
+    padding 10px
+
+.section-card
+    background: colorPrimaryLight;
+    border-radius 6px
+    //box-shadow: 5px 5px 10px rgba(30, 33, 94, 0.15)
+    padding: 1rem 1rem 1rem 1rem
+    margin-bottom: 40px
+    position: relative
+    float: left;
+    width:100%;
+    &-title
+        color white
+        font-size: 135%
+
+    &.current-path
+        padding-bottom: 90px
+
+.section-card-tabs {
+    border-radius: 0 0 6px 6px
+}
+
+.completion-text
+    text-align: right
+    color darken(colorTertiary, 20)
+    font-size: 120%
+    width 100%
+    margin-top 1em
+
+.completion-text-big
+    position: absolute
+    font-size 200%
+    color white
+    bottom 20px
+    right 20px
+
+.section-card-header
+    background: darken(colorTertiary, 20)
+    padding: 2rem 2rem 2rem 2rem
+    border-radius: 6px 6px 0 0
+    width: 100%
+    height: 120px
+    position: absolute
+    left: 0
+    top: 0
+
+.section-card-tabs-header {
+    border-radius: 0
+}
+
+.section-card-caption
+    font-size: 0.8rem
+    font-weight: bold
+    color: rgba(255,255,255,0.8)
+
+.section-card-button
+    border none
+    min-width: 0
+    position: absolute    
+    top 24px
+    right 20px
+    background: none
+    box-shadow: none
+    border 2px solid white
+    width 120px
+
+.section-card-content
+    margin-top 9em
+
+.current-path-view-button
+    border none
+    min-width: 0
+    position: absolute    
+    top 24px
+    right 20px
+    background: none
+    box-shadow: none
+    border 2px solid white
+    width 120px
+
+.current-path-continue-button
+    position: absolute
+    background: colorSecondary
+    i
+        background-color: darken(colorSecondary, 20)
+    width 150px
+    bottom 1em
+    left 50%
+    transform: translateX(-50%)
+
+.course-card.connected
+    &:after
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -60px;
+        left: 50%;
+        margin-left: -5px;
+        width: 10px;
+        height: 63px;
+        background: colorPrimaryLight
+        border-radius: 5px;
+    &:last-child:after
+        height 0px
 
 .linkActive
     li
@@ -57,38 +303,12 @@ a
             color white !important         
 .side-panel li:hover
         background colorSecondaryLight
-        
-// .marginTop
-//     margin-top 7em
-
-.displayFlex
-    display flex
-
-/* ------------ */
-// .colQuarter
-//     lost-column: 1/4 4
-
-// .colFull
-//     width 100%
-//     margin-bottom: 20px
-
-// .tabButton
-//     outline: 0 !important
-//     background: #eff9fb
-//     color colorPrimary
-//     border-radius: 20px
-//     margin 0 10px
-//     padding 10px
-//     border none
-//     height: 35px
-//     line-height: 5px
-//     box-shadow: none
 
 .tabButton
-    background: colorPrimaryDark
+    background: colorPrimaryLight
     border-radius:6px 6px 0 0;
     outline: 0 !important
-    color: colorTextInverse
+    color: colorPrimaryDark// colorTextInverse
     margin-right:5px
     padding 15px
     border none
@@ -99,8 +319,8 @@ a
     margin-right:0;
 }
 .activeTabCaption
-    background colorPrimaryLight
-    color: colorPrimary;
+    background: colorPrimaryDark
+    color: colorTextInverse;
 
 .dashboard-path-list,
 .lesson-list {
@@ -108,7 +328,7 @@ a
     border-radius: 0 0 6px 6px;
     display: flex;
     flex-wrap: wrap;
-    // justify-content: space-between;
+    //justify-content: space-between;
     margin-bottom:20px;
     padding: spaceMedium;
 }
@@ -124,15 +344,15 @@ a
     background colorTextInverse
     border-radius 6px
     box-shadow: 5px 5px 10px rgba(30, 33, 94, 0.15)
-    display: flex
-    flex-direction: column
+    // display: flex
+    //flex-direction: column
     padding: 4rem 2rem 2rem 2rem
     position relative
     margin-bottom: 20px
 
 .lesson-image,
 .path-image
-    padding: 470px 2rem 2rem 2rem
+    padding: 40vh 2rem 2rem 2rem
 
 .lesson-header,
 .path-header
@@ -148,13 +368,16 @@ a
 .path-header-image
     background: url("http://lorempixel.com/1900/1200/technics/")
     background-size: cover
-    height: 450px
+    height: 40vh
+
+.lesson-header-image
+    background: url("http://lorempixel.com/1900/1200/abstract/")
 
 .lesson-header-image-color,
 .lesson-header-image-color2,
 .path-header-image-color
     background alpha(darkslateblue, 0.75)
-    height: 450px
+    height: 40vh
     text-align: center
     display: flex
     align-items: center
@@ -162,7 +385,7 @@ a
 
 .lesson-header-image-color2,
 .path-header-image-color2
-    background alpha(colorSecondary, 0.75)
+    background alpha(black, 0.5)
 
 .lesson-header-path-name,
 .path-header-path-name
@@ -240,21 +463,12 @@ a
     box-shadow: none
 
 .tabbed-content {
-    padding:2rem;
+    padding:0 2rem 2rem 2rem;
 }
 
 .tabs {
     display: flex;
 }
-
-.metrics
-    display: flex
-    flex-direction: column
-    padding: 2rem;
-    position relative
-    margin-bottom: 40px
-
-
 
 // .course-description
 //     //font-size 80%

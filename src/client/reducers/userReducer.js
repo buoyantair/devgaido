@@ -12,12 +12,28 @@ const user = (state = {
   dayLastVisited: Date.now(),
   streak: 0,
   bookmarkedPaths: [],
-  lessonsCompleted: [],
-  curPathId: 'srcctrl',
+  curPathId: '',
 }, action) => {
   switch (action.type) {
-    case 'TEST_LOGIN':
-      return action.user;
+    case 'SET_CURRENT_PATH_ID': {
+      return { ...state, curPathId: action.pathId };
+    }
+    case 'ADD_BOOKMARK': {
+      const index = state.bookmarkedPaths.indexOf(action.pathId);
+      if (index === -1) {
+        return { ...state, bookmarkedPaths: state.bookmarkedPaths.concat(action.pathId) };
+      }
+      return state;
+    }
+    case 'REMOVE_BOOKMARK': {
+      const index = state.bookmarkedPaths.indexOf(action.pathId);
+      if (index !== -1) {
+        const newBookmarkedPaths = state.bookmarkedPaths.slice(0);
+        newBookmarkedPaths.splice(index, 1);
+        return { ...state, bookmarkedPaths: newBookmarkedPaths };
+      }
+      return state;
+    }
     default:
       return state;
   }
